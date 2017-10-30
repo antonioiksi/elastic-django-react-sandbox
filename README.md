@@ -87,4 +87,12 @@ REST_FRAMEWORK = {
 }
 ```
 
+now let us make some changes in `urls.py` (have a look in git repo)
+
+Now start up server!
+```commandline
+./manage.py runserver
+```
+
+## 3 STEP
 

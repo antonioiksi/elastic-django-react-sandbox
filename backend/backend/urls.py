@@ -31,6 +31,7 @@ from rest_framework.response import Response
 
 class MessageSerializer(serializers.Serializer):
     message = serializers.CharField()
+
 class EchoView(views.APIView):
     def post(self, request, *args, **kwargs):
         serializer = MessageSerializer(data=request.data)
