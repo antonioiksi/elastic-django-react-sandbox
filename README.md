@@ -94,5 +94,13 @@ Now start up server!
 ./manage.py runserver
 ```
 
-## 3 STEP
+## 3 STEP frontend app
+
+from the root of our project execute
+
+```commandline
+mkdir frontend && cd frontend
+create-react-app .
+
+```
 
