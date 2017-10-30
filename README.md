@@ -59,5 +59,32 @@ rememeber names of our packages in requirements.txt
 pip freeze > requirements.txt
 ```
 
-## STEP 2 Setup BasicAuth for django project
+## STEP 2 Setup JWT Auth for django project
+
+```commandline
+cd backend
+
+pip install coreapi djangorestframework \
+      djangorestframework-simplejwt
+```
+
+change  install apps in `settings.py`
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+]
+
+# Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+}
+```
+
 
