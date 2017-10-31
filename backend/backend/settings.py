@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'app_log',
+    'app_elastic',
+    'app_business_model_f',
 ]
 # Rest Framework
 REST_FRAMEWORK = {

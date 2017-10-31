@@ -104,3 +104,27 @@ create-react-app .
 
 ```
 
+...
+
+## 4 STEP create test rest api SECURE and INSECURE
+
+```commandline
+cd backend && ./manage.py startapp app_log
+```
+
+in file `app_log/models.py` create model
+
+add app in backend/settings.py
+```python
+INSTALLED_APPS = [
+    ...
+    'app_log',
+]
+```
+TODO add description
+
+
+## 5 STEP Load data
+
+
+./manage.py loaddata attributes.json 

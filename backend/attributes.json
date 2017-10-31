@@ -1,0 +1,34 @@
+[
+  {
+    "model": "app_business_model_f.attribute",
+    "pk": 1,
+    "fields": {
+      "name": "phone",
+      "title": "телефон"
+    }
+  },
+  {
+    "model": "app_business_model_f.attribute",
+    "pk": 2,
+    "fields": {
+      "name": "email",
+      "title": "email"
+    }
+  },
+  {
+    "model": "app_business_model_f.attribute",
+    "pk": 3,
+    "fields": {
+      "name": "firstname",
+      "title": "имя"
+    }
+  },
+  {
+    "model": "app_business_model_f.attribute",
+    "pk": 4,
+    "fields": {
+      "name": "lastname",
+      "title": "фамилия"
+    }
+  }
+]
