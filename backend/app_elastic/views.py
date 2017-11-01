@@ -18,7 +18,7 @@ from rest_framework.decorators import authentication_classes, permission_classes
 @permission_classes([])
 def hello_world(request):
     print(request.user)
-    return Response({"message":"Hello world!"})
+    return Response([{"message":"Hello world!"},{"message":"Hello world!"}])
 
 #class QuerySerializer(serializers.Serializer):
     #query = serializers.CharField()

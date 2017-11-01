@@ -94,17 +94,6 @@ Now start up server!
 ./manage.py runserver
 ```
 
-## 3 STEP frontend app
-
-from the root of our project execute
-
-```commandline
-mkdir frontend && cd frontend
-create-react-app .
-
-```
-
-...
 
 ## 4 STEP create test rest api SECURE and INSECURE
 
@@ -128,3 +117,48 @@ TODO add description
 
 
 ./manage.py loaddata attributes.json 
+
+
+
+## **Allow problem
+
+`pip install django-cors-headers`
+
+than add to settings.py
+
+```python
+
+INSTALLED_APPS = [
+    ...
+    'corsheaders',
+    ...
+]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+MIDDLEWARE = [
+    ...
+    'corsheaders.middleware.CorsMiddleware',
+    ...
+] 
+```
+
+# FRONTEND
+
+from the root of our project execute
+
+```commandline
+mkdir frontend && cd frontend
+create-react-app .
+
+```
+
+```commandline
+npm i --save bootstrap
+npm i --save react-bootstrap
+
+```
+add routes
+```commandline
+npm i --save react-router-dom
+```

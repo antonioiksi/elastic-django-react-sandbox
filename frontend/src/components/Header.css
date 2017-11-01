@@ -1,0 +1,16 @@
+.navbar-brand img {
+    display: inline-block;
+    height: 26px;
+    animation: navbar-logo-spin infinite 20s linear;
+}
+
+
+.nav > li {
+    float: left;
+}
+
+
+@keyframes navbar-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
