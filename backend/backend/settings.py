@@ -43,6 +43,12 @@ INSTALLED_APPS = [
     'app_elastic',
     'app_business_model_f',
 ]
+
+
+# app_elastic
+ELASTIC_SEARCH_URL = 'http://localhost:9200/'
+
+
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
@@ -52,6 +58,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -140,3 +147,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import logo from '../img/logo.svg';
 import './Header.css';
@@ -125,18 +126,13 @@ export default class Header extends React.Component {
                         </NavDropdown>
                         <NavDropdown title={<i className="fa fa-user fa-fw"></i> } id = 'navDropdown4'>
                             <MenuItem eventKey="1">
-                                <span> <i className="fa fa-user fa-fw"></i> User Profile </span>
+                                <span> <i className="fa fa-user fa-fw"></i><Link to={'/userprofile'}>User Profile</Link></span>
                             </MenuItem>
                             <MenuItem eventKey="2">
-                                <span><i className="fa fa-gear fa-fw"></i> Settings </span>
+                                <span><i className="fa fa-gear fa-fw"></i><Link to={'/settings'}>Settings</Link>  </span>
                             </MenuItem>
-                            <MenuItem divider />
-                            <MenuItem eventKey = "3" href = 'http://www.strapui.com' >
-                                <span> <i className = "fa fa-eye fa-fw" /> Premium React Themes </span>
-                            </MenuItem>
-                            <MenuItem divider />
                             <MenuItem eventKey = "4" >
-                                <span> <i className = "fa fa-sign-out fa-fw" /> Logout </span>
+                                <span> <i className = "fa fa-sign-out fa-fw" /> <Link to={'/logout'}>Logout</Link></span>
                             </MenuItem>
                         </NavDropdown>
                     </ul>

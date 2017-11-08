@@ -143,6 +143,16 @@ MIDDLEWARE = [
 ] 
 ```
 
+## Add docs for django rest gramework
+
+
+## Add Middleware Class for LOGGING
+
+
+## Add Class with free access privilegies to rest api
+
+
+
 # FRONTEND
 
 from the root of our project execute

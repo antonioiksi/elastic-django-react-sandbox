@@ -1,0 +1,29 @@
+{
+  "findAll": {
+    "query": {
+      "match_all": {}
+    }
+  },
+  "findByField": {
+    "query": {
+      "bool": {
+        "should": [
+          {
+            "query_string": {
+              "default_field": "*.person_edgephone",
+              "query": "454227~0"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "MultifieldSearchMatch" : {
+    "query": {
+      "bool": {
+        "should": [
+        ]
+      }
+    }
+  }
+}

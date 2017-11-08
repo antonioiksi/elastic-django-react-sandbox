@@ -110,8 +110,7 @@ export default class LoginForm extends Component {
                     }
 
             <FormGroup controlId="formHorizontalLogin" validationState={validate_u}>
-                <Col componentClass={ControlLabel} sm={4}>Username</Col>
-                <Col sm={8}>
+                <Col sm={12}>
                     <FormControl type="text"
                                  placeholder="username"
                                  name="username"
@@ -132,7 +131,7 @@ export default class LoginForm extends Component {
             </FormGroup>
 
             <FormGroup>
-                <Col smOffset={2} sm={8}>
+                <Col smOffset={0} sm={12}>
                   {submitDisabled ? (
                       <Button type="submit" bsStyle="success" block disabled>Sign in</Button>
                   ) : (

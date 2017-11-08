@@ -8,6 +8,7 @@ class Log(models.Model):
     datetime = models.DateTimeField(u'ДатаВремя', auto_now_add=True)
     query = JSONField(blank=True, null=True, verbose_name="JSON запрос")
     event = models.CharField(u'Событие',blank=False, null=False, max_length=100)
+    method = models.CharField(u'Method', blank=False, null=False, max_length=100,default='GET')
 
 
     def __str__(self):

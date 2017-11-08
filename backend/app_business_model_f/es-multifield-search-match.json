@@ -1,0 +1,18 @@
+{
+  'query': {
+    'bool': {
+      'should': [
+        {
+          'match': {
+            'value': '4352435342532'
+          }
+        },
+        {
+          'match': {
+            'name': 'phone'
+          }
+        }
+      ]
+    }
+  }
+}
