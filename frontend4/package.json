@@ -7,12 +7,15 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "jsonschema": "^1.2.0",
+    "jwt-decode": "^2.2.0",
     "react": "^16.0.0",
     "react-bootstrap": "^0.31.5",
+    "react-bootstrap-table": "^4.1.1",
     "react-dom": "^16.0.0",
     "react-json-view": "^1.13.3",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.17"
+    "react-scripts": "1.0.17",
+    "react-spinners": "^0.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

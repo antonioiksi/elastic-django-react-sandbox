@@ -1,7 +1,8 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
 
-import {Form, FormGroup, Col, FormControl, ControlLabel, Checkbox, Button} from 'react-bootstrap';
+import {Form, FormGroup, Col, FormControl, ControlLabel, Checkbox, Button, Panel} from 'react-bootstrap';
+import {obtain_jwt} from "../../../../services/auth";
 
 
 class LoginForm extends React.Component {
@@ -9,29 +10,53 @@ class LoginForm extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {isLoggedIn:false};
+
+        this.state = {
+            gotAccessToken:false,
+            error:'',
+            username:'',
+            password:'',
+        };
+        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+
+    handleChange(event) {
+        const value = event.target.value;
+        const name = event.target.name;
+        this.setState({
+            [name]: value
+        });
+    }
+
     handleSubmit(event) {
-        alert(event.target.name);
-        this.setState({isLoggedIn:true});
+        event.preventDefault();
+        obtain_jwt( this, this.state.username, this.state.password);
     }
 
     render() {
 
-        if(this.state.isLoggedIn) return (<Redirect to="/dashboard/"/>);
+        const {username, password, error, gotAccessToken} = this.state;
+        if(gotAccessToken) return (<Redirect to="/dashboard/"/>);
 
         return (
 
 
-            <Form horizontal>
+            <Form horizontal onSubmit={this.handleSubmit}>
+                { error && <Panel header="Error" bsStyle="danger">{error}</Panel>}
+
                 <FormGroup controlId="formHorizontalEmail">
                     <Col componentClass={ControlLabel} sm={2}>
                         Email
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="text" placeholder="User" />
+                        <FormControl type="text"
+                                     placeholder="username"
+                                     onChange={this.handleChange}
+                                     name="username"
+                                     value={username}
+                        />
                     </Col>
                 </FormGroup>
 
@@ -40,7 +65,7 @@ class LoginForm extends React.Component {
                         Password
                     </Col>
                     <Col sm={10}>
-                        <FormControl type="password" placeholder="Password" />
+                        <FormControl type="password" placeholder="password" name="password" value={password} onChange={this.handleChange} />
                     </Col>
                 </FormGroup>
 

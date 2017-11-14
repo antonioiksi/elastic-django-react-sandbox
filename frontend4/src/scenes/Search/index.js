@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
-import axios from 'axios';
 import ReactJson from 'react-json-view'
 
-
-import SearchForm from "./components/SearchForm";
 import SearchResult from "./components/SearchResult";
 import SearchFileUpload from "./components/SearchFileUpload";
 import {Panel, ButtonToolbar, ToggleButton, ToggleButtonGroup, Button} from "react-bootstrap";
 
-import {multifield_search_match, attributes, ES_URL} from "../../services/business_model_f";
 import SearchFormList from "./components/SearchFormList";
+import {multifield_search_match, attributes} from "../../services/business_model_f";
+import {search_drill, search_simple} from "../../services/elastic/index";
+import SearchTable from "./components/SearchTable/index";
 
 const initQueryValues = [
     {
@@ -25,6 +24,7 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state={
+            loading:false,
             error:'',
             attrTypes:[],
             searchType:SEARCH_TYPES.FORM,
@@ -63,12 +63,38 @@ class Search extends Component {
     }
 
     handleSearch() {
+        //event.preventDefault();
         //const that = this;
         let jsonQuery = this.state.multiQuery;
         //this.setState({
         //    result: this.state.query.slice(0),
         //});
-        multifield_search_match(this, jsonQuery);
+        this.setState({loading: true},() => {
+            multifield_search_match(this, jsonQuery);
+        });
+    }
+
+    handleSimpleSearch() {
+        //event.preventDefault();
+        //const that = this;
+        let jsonQuery = this.state.multiQuery;
+        //this.setState({
+        //    result: this.state.query.slice(0),
+        //});
+        this.setState({loading: true},() => {
+            search_simple(this, jsonQuery);
+        });
+    }
+    handleDrillSearch() {
+        //event.preventDefault();
+        //const that = this;
+        let jsonQuery = this.state.multiQuery;
+        //this.setState({
+        //    result: this.state.query.slice(0),
+        //});
+        this.setState({loading: true},() => {
+            search_drill(this, jsonQuery);
+        });
     }
 
     loadFormsValues(formsValues) {
@@ -83,7 +109,6 @@ class Search extends Component {
                 );
                 newMultiQuery.push(query);
             }
-
         );
         //console.log(newMultiQuery);
 
@@ -148,7 +173,14 @@ class Search extends Component {
                     <ReactJson src={this.state.multiQuery} />
                 </Panel>
                 <Button  bsStyle="primary" bsSize="large" onClick={() => this.handleSearch()}>Search</Button>
-                <SearchResult jsonQuery={this.state.multiQuery} jsonData={this.state.result}/>
+                <Button  bsStyle="primary" bsSize="large" onClick={() => this.handleSimpleSearch()}>SimpleSearch</Button>
+                <Button  bsStyle="primary" bsSize="large" onClick={() => this.handleDrillSearch()}>DrillSearch</Button>
+                {
+                    /*
+                    <SearchResult jsonQuery={this.state.multiQuery} jsonData={this.state.result} loading={this.state.loading}/>
+                    */
+                }
+                <SearchTable jsonQuery={this.state.multiQuery} jsonData={this.state.result} loading={this.state.loading}/>
             </div>
         )
     }

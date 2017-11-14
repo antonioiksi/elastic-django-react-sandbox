@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, FormGroup, ControlLabel, FormControl, HelpBlock} from "react-bootstrap";
+import {FormGroup, ControlLabel, FormControl, HelpBlock} from "react-bootstrap";
 import PropTypes from 'prop-types';
 
-import {validate, Validator} from 'jsonschema';
+import {Validator} from 'jsonschema';
 import Schema from './schema.json';
 import Test from './test.json';
 

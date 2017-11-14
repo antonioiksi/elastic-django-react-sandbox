@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import {Button} from "react-bootstrap";
 
 import SearchForm from "../SearchForm";
+import SearchTable from "../SearchTable";
 
-const initQueryValues = [];//[{name:'phone',value:'43523452'},{name:'firstname', value:'Petrov'}];
+
+
+
+//const initQueryValues = [];//[{name:'phone',value:'43523452'},{name:'firstname', value:'Petrov'}];
 
 
 class SearchFormList extends React.Component {
@@ -84,6 +88,7 @@ class SearchFormList extends React.Component {
                         )
                     }
                 </div>
+
                 <Button  bsStyle="warning" bsSize="large" onClick={() => this.handleLoadFormsValues()}>Load forms values</Button>
             </div>
         )

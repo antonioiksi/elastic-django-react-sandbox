@@ -1,5 +1,7 @@
 import json
 import os
+
+import datetime
 import requests
 import pprint
 import copy
@@ -7,17 +9,21 @@ from django.shortcuts import render
 
 # Create your views here.
 from rest_framework.response import Response
-from rest_framework import generics, views, status
+from rest_framework import generics, views, status, viewsets
 
-from app_log.mixins import RequestLogViewMixin
 
 from backend import settings
-from .permissions import PublicEndpoint
+from app_log.mixins import RequestLogViewMixin
+from backend.permissions import PublicEndpoint
 from .models import Attribute
 from .serializers import AttributeSerializer
 
+from django.contrib.auth.models import User
 #def
 #ES_QUERY_TEMPLATE =
+
+
+
 
 
 class AttributeListView(RequestLogViewMixin, generics.ListAPIView):
@@ -54,8 +60,10 @@ class MultifieldSearchMatchView(RequestLogViewMixin, views.APIView):
 }
 
     """
-    permission_classes = (PublicEndpoint,)
     def post(self, request, *args, **kwargs):
+
+        user = self.request.user
+        print(user)
         dir_path = os.path.dirname(os.path.realpath(__file__))
         with open(os.path.join(dir_path, 'es-query-templates.json')) as json_queries:
             d = json.load(json_queries)
@@ -76,7 +84,7 @@ class MultifieldSearchMatchView(RequestLogViewMixin, views.APIView):
                 #json_match_val1['match'][k]=v
                 query['query']['bool']['should'].append(match)
             pprint.pprint(query)
-            r = requests.post(settings.ELASTIC_SEARCH_URL + "_search", json.dumps(query))
+            r = requests.post(settings.ELASTIC_SEARCH_URL + "/_search", json.dumps(query))
 
             if r.status_code!=200:
                 return Response('app_elastic error for query '+json.dumps(query), status=status.HTTP_500_INTERNAL_SERVER_ERROR)
@@ -84,7 +92,6 @@ class MultifieldSearchMatchView(RequestLogViewMixin, views.APIView):
             lstR.append(r.json())
 
         return Response( lstR, status=status.HTTP_200_OK)
-        #return Response( d, status=status.HTTP_200_OK)s
 
 
 class ElasticProxyView(RequestLogViewMixin, views.APIView):

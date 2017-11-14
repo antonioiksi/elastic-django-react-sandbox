@@ -42,11 +42,12 @@ INSTALLED_APPS = [
     'app_log',
     'app_elastic',
     'app_business_model_f',
+    'app_data_bins',
 ]
 
 
 # app_elastic
-ELASTIC_SEARCH_URL = 'http://localhost:9200/'
+ELASTIC_SEARCH_URL = 'http://localhost:9200'
 
 
 # Rest Framework
@@ -106,7 +107,11 @@ DATABASES = {
         'USER': 'user171030',
         'PASSWORD': 'user171030',
         'HOST': 'localhost',
-        'PORT': '5432'
+        'PORT': '5432',
+        # for testing views
+        'TEST': {
+            'NAME': 'backend_test',
+        },
     }
 }
 

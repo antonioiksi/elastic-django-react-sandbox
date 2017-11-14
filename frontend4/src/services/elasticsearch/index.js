@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
+import {ELASTICSEARCH_URL} from "../constants";
 
-const ELASTICSEARCH_URL = 'http://localhost:9200';
 
 
 export function indices( sender)
